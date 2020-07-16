@@ -83,26 +83,15 @@ jobs:
       - store_artifacts:
           path: build/libs
 
-#workflows:
- # version: 2
-  #workflow:
-   # jobs:
-    #- build
-    #- test:
-     #   requires:
-      #    - build
 workflows:
-  build_and_test:
+  version: 2
+  workflow:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
-      - hold:
-          type: approval
-          requires:
-            - build
-            - test
-      - deploy:
-          requires:
-            - hold
+    - build
+    - test:
+        requires:
+          - build
+    - hold:
+        type: approval
+        requires:
+          - build
