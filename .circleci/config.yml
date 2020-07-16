@@ -87,7 +87,10 @@ workflows:
   version: 2
   workflow:
     jobs:
-    - build
+    - hold:
+        type: approval
+        requires:
+          - build
     - test:
         requires:
           - build
