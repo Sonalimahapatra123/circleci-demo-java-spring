@@ -88,10 +88,6 @@ workflows:
   workflow:
     jobs:
     - build
-    - hold:
-        type: approval
-        requires:
-          - build
     - test:
         requires:
           - build
@@ -99,3 +95,10 @@ workflows:
         type: approval
         requires:
           - build
+    - build:
+        requires:
+          - hold
+        
+        
+    
+  
