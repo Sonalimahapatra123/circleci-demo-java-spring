@@ -9,10 +9,10 @@ jobs:
    steps:
      - checkout
      - run: sudo apt-get install apache2 -y
-          name: Deploy Over SSH
-          command: |
-            echo $CIRCLE_BUILD_NUM
-            ssh ubuntu@34.229.128.9 BUILD_NO="$CIRCLE_BUILD_NUM" /bin/bash < "/home/ubuntu"    
+         name: Deploy Over SSH
+         command: |
+           echo $CIRCLE_BUILD_NUM
+           ssh ubuntu@34.229.128.9 BUILD_NO="$CIRCLE_BUILD_NUM" /bin/bash < "/home/ubuntu"    
   workflows:
   version: 2
   workflow:
