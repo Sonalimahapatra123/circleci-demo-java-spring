@@ -1,0 +1,23 @@
+Version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4
+  deploy:
+   machine:
+     enabled: true
+   steps:
+     - checkout
+     - run: sudo apt-get install apache2 -y
+      - run:
+          name: Deploy Over SSH
+          command: |
+            echo $CIRCLE_BUILD_NUM
+            ssh ubuntu@34.229.128.9 BUILD_NO="$CIRCLE_BUILD_NUM" /bin/bash < "/home/ubuntu"    
+  workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build
+      - deploy          
+      
