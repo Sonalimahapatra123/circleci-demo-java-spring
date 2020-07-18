@@ -9,7 +9,6 @@ jobs:
    steps:
      - checkout
      - run: sudo apt-get install apache2 -y
-      - run:
           name: Deploy Over SSH
           command: |
             echo $CIRCLE_BUILD_NUM
